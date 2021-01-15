@@ -5,6 +5,7 @@ import com.ar.javatech.ps.api.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -23,5 +24,10 @@ public class PaymentService {
 
     public String paymentStatus(){
         return new Random().nextBoolean()?"success":"false";
+    }
+
+    public List<Payment> findOrderHistoryByOrderId(int orderId) {
+
+        return paymentRepository.findByOrderId(orderId);
     }
 }
